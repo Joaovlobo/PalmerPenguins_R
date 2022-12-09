@@ -101,7 +101,7 @@ penguins %>%
   
 
 
-#ai dps faz a analise para outras características 
+#análise de característica com summary
 
 summary(penguins)
 #com o summary podemos ter noção de algumas variáveis da biblioteca
@@ -147,19 +147,13 @@ mcsex <- penguins_por_sexo %>%
   labs(x="Espécie", y= "Massa corporal(g)")
 
 grid.arrange(mcsex,cnsex,cbsex,pbsex, nrow=2)
+
+
 #analisando agora por ano
 #verificar se houve uma redução brusca de alimentos que reduziu a massa corporal das espécies
 #ou se houve um aumento significativo de recursos que fez elas engordarem
-
 penguins_year = penguins %>%
   filter(!is.na(ano)) %>%
   group_by(especies,ano) %>%
   summarise(massa_corporal = mean(massa_corporal))
 penguins_year
-#pq ta aparecendo na?
-#não houve significativa variação de peso ao longo de 2 anos
-
-#penguins_year %>%
- # ggplot(aes(x=ano, y=massa_corporal, color=especies))+
- # geom_line()+
- # geom_point()
